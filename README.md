@@ -144,7 +144,7 @@ cat /var/jenkins_home/secrets/initialAdminPassword
 * Jenkins ofrece dos opciones de instalación de plugin. Escoge los plugin sugeridos. Espera a que finalice la instalación de plugin. Continue con la creación de un usuario administrador. Guarde la configuración por defecto de la url de Jenkins y finalice. Reinicie Jenkins si es necesario.
 
 
-* Instale los siguientes plugin: HTML Publisher; Pipeline Maven Integration.
+* Instale los siguientes plugin: HTML Publisher.
 
 
 * Cree un pipeline. El nombre queda a su elección. En la sección llamada _Pipeline_: la definición del pipeline debe ser _Pipeline script from SCM_; en el campo _SCM_ escoge la opción _Git_; en el campo _Repository URL_ pon la url del repositorio que es _https://github.com/ivanarroyave/dummyapiWitKarateFramework.git_; en la sección que se llama _Branch Specifier (blank for 'any')_ indica la rama que será la referencia para que se ejecute el pipeline, para este caso pon _*/trunk_. Finalmente, aplica los cambios y guarda el pipeline.
@@ -154,6 +154,10 @@ cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 pipeline {
     agent any
+	
+	tools { 
+        gradle 'Gradle 6.9.3' 
+    }
 	
 	options {
 		// Keep the 10 most recent builds
@@ -165,13 +169,15 @@ pipeline {
         stage("Test") {
             steps {		
 				dir("${env.WORKSPACE}/dummyapiWithKarate"){
+					
 					sh "gradle clean build -x test"
+					
 					sh "gradle test --tests *runners.ParallelRunnerTest*"
 					
-					 publishHTML(target: [
-						reportName : 'Serenity bdd report',
-						reportDir:   'target/site/serenity',
-						reportFiles: 'index.html',
+					publishHTML(target: [
+						reportName : 'Cucumber with Karate report',
+						reportDir:   'dummyapiWitKarate/build/cucumber-html-reports',
+						reportFiles: 'overview-features.html',
 						keepAll:     true,
 						alwaysLinkToLastBuild: true,
 						allowMissing: false
@@ -181,6 +187,9 @@ pipeline {
         }
     }
 }
+
+NOTA: instala Gradle 6.9.3 por medio de Jenkins en las configuraciones globales de herramientas. 
+
 ```
 
 
