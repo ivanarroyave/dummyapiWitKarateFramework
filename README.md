@@ -195,6 +195,13 @@ NOTA: instala Gradle 6.9.3 por medio de Jenkins en las configuraciones globales 
 
 * Ahora si, finalmente podrás ejecutar el pipeline. Ingrese al pipeline y acciona la opción _Construir ahora_ todas las veces que lo necesites.
 
+## Relajar políticas en Jenkins para visualizar reporte de pruebas adecuadamente
+Ve a Administrar Jenkins; Consola de scripst; en el cuadro de scripst escribe: 
+```
+System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
+```
+
+Ejecuta la acción. Limpia la cahé y abre el informe de las pruebas. En ocasiones es posible que debas abrir el reporte desde una ventana de incognito.
 
 ## Autores
 
