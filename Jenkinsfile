@@ -11,11 +11,18 @@ pipeline {
         stage("Test") {
             steps {		
 				dir("${env.WORKSPACE}/dummyapiWithKarate"){
-					//sh "pwd"
 					sh "gradle clean build -x test"
-					//sh "gradle test --tests *runners.ParallelRunnerTest*"
 					
-	
+					sh "gradle test --tests *runners.ParallelRunnerTest*"
+					
+					publishHTML(target: [
+						reportName : 'Serenity bdd report',
+						reportDir:   'target/site/serenity',
+						reportFiles: 'index.html',
+						keepAll:     true,
+						alwaysLinkToLastBuild: true,
+						allowMissing: false
+					])
 				}
 			}
         }
