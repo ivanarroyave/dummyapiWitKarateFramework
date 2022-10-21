@@ -11,6 +11,9 @@ pipeline {
         stage("Test") {
             steps {		
 				dir("${env.WORKSPACE}/dummyapiWithKarate"){
+				
+					sh "chmod +x gradlew"
+					
 					sh "./gradlew clean build -x test"
 					
 					sh "./gradlew test --tests *runners.ParallelRunnerTest*"
