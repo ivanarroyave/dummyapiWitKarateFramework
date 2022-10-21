@@ -2,7 +2,7 @@ pipeline {
     agent any
 	
 	tools { 
-        maven 'Gradle 6.9.3' 
+        gradle 'Gradle 6.9.3' 
     }
 	
 	options {
