@@ -12,6 +12,8 @@ pipeline {
             steps {		
 				dir("${env.WORKSPACE}/dummyapiWithKarate"){
 				
+					sh "gradle -version"
+					
 					sh "chmod +x gradlew"
 					
 					sh "./gradlew clean build -x test"
