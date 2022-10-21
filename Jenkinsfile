@@ -22,7 +22,7 @@ pipeline {
 					
 					publishHTML(target: [
 						reportName : 'Cucumber with Karate report',
-						reportDir:   'dummyapiWitKarate/build/cucumber-html-reports',
+						reportDir:   'build/cucumber-html-reports',
 						reportFiles: 'overview-features.html',
 						keepAll:     true,
 						alwaysLinkToLastBuild: true,
