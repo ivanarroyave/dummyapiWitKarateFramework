@@ -21,7 +21,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    systemProperty "karate.env", System.properties.getProperty("karate.env")
 }
 
 sourceSets {
