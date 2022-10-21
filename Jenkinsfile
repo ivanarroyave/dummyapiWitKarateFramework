@@ -1,6 +1,10 @@
 pipeline {
     agent any
 	
+	tools { 
+        maven 'Gradle 6.9.3' 
+    }
+	
 	options {
 		// Keep the 10 most recent builds
 		buildDiscarder(logRotator(numToKeepStr:'3'))
@@ -11,14 +15,10 @@ pipeline {
         stage("Test") {
             steps {		
 				dir("${env.WORKSPACE}/dummyapiWithKarate"){
-				
-					sh "gradle -version"
 					
-					sh "chmod +x gradlew"
+					sh "gradle clean build -x test"
 					
-					sh "./gradlew clean build -x test"
-					
-					sh "./gradlew test --tests *runners.ParallelRunnerTest*"
+					sh "gradle test --tests *runners.ParallelRunnerTest*"
 					
 					publishHTML(target: [
 						reportName : 'Serenity bdd report',
