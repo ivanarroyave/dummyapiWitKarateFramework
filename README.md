@@ -203,6 +203,10 @@ System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "")
 
 Ejecuta la acción. Limpia la cahé y abre el informe de las pruebas. En ocasiones es posible que debas abrir el reporte desde una ventana de incognito.
 
+## Recursos de apoyo
+* https://github.com/jenkinsci/docker/blob/master/README.md
+* https://gist.github.com/jdmesalosada/c1cea77d1d5572df3b27d870c4d588be
+
 ## Autores
 
 * **Iván Darío Arroyave Arboleda** - *Ingeniero de sistemas de información - Especializado en el aseguramiento de la calidad del software* - [ivanarroyave](https://github.com/ivanarroyave)
