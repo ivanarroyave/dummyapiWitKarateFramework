@@ -21,9 +21,9 @@ pipeline {
 					sh "gradle test --tests *runners.ParallelRunnerTest*"
 					
 					publishHTML(target: [
-						reportName : 'Serenity bdd report',
-						reportDir:   'target/site/serenity',
-						reportFiles: 'index.html',
+						reportName : 'Cucumber with Karate report',
+						reportDir:   'dummyapiWitKarate/build/cucumber-html-reports',
+						reportFiles: 'overview-features.html',
 						keepAll:     true,
 						alwaysLinkToLastBuild: true,
 						allowMissing: false
