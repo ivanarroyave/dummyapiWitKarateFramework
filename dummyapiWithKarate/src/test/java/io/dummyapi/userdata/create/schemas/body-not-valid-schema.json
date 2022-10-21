@@ -1,0 +1,8 @@
+{
+  "error": "BODY_NOT_VALID",
+  "data": {
+    "lastName": "Path `lastName` is required.",
+    "firstName": "Path `firstName` is required.",
+    "email": "Path `email` is required."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "#string",
+  "title": "#string",
+  "firstName": "#string",
+  "lastName": "#string",
+  "gender": "#string",
+  "email": "#string",
+  "phone": "#string",
+  "registerDate": "#string",
+  "updatedDate": "#string"
+}
